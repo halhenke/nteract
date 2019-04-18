@@ -71,7 +71,10 @@ const rendererConfig = {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
     alias: configurator.mergeDefaultAliases()
   },
-  plugins: []
+  plugins: [],
+  devServer: {
+    hot: true
+  }
 };
 
 module.exports = {
