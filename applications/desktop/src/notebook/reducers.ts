@@ -7,7 +7,7 @@ import {
 
 export function handleDesktopNotebook(
   state: DesktopNotebookRecord = makeDesktopNotebookRecord(),
-  action: actionTypes.CloseNotebook | actionTypes.CloseNotebookProgress
+  action: actionTypes.CloseNotebook | actionTypes.CloseNotebookProgress | boolean
 ) {
   switch (action.type) {
     case actionTypes.CLOSE_NOTEBOOK:
@@ -15,6 +15,12 @@ export function handleDesktopNotebook(
 
     case actionTypes.CLOSE_NOTEBOOK_PROGRESS:
       return state.set("closingState", action.payload.newState);
+
+    case actionTypes.SHOW_PALLETTE:
+      return state.set("palletteHidden", false);
+
+    case actionTypes.HIDE_PALLETTE:
+      return state.set("palletteHidden", true);
 
     default:
       return state;

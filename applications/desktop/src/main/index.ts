@@ -88,7 +88,23 @@ ipc.on("show-message-box", (event: Event, arg: any) => {
   event.sender.send("show-message-box-response", response);
 });
 
+ipc.on("pallette", (event: Event) => {
+  console.log(`pallette was called`);
+});
+
 app.on("ready", initAutoUpdater);
+
+app.on("ready", () => {
+  const path = require('path');
+  const os = require('os');
+  BrowserWindow.addDevToolsExtension(
+    path.join(os.homedir(), '/Library/Application Support/Google/Chrome Canary/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/3.6.0_0')
+  );
+  BrowserWindow.addDevToolsExtension(
+    path.join(os.homedir(), '/Library/Application Support/Google/Chrome Canary/Default/Extensions/lmhkpmbekcpmknklioeibfkpmmfibljd/2.17.0_0')
+  );
+  console.log("Hope we instaled something...");
+});
 
 const electronReady$ = new Observable(observer => {
   app.on("ready", (event: Event) => observer.next(event));

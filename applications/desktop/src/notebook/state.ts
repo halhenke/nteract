@@ -15,13 +15,15 @@ export const DESKTOP_NOTEBOOK_CLOSING_READY_TO_CLOSE: DesktopNotebookClosingStat
 
 export interface DesktopNotebookProps {
   closingState: DesktopNotebookClosingState;
+  palletteHidden: boolean;
 }
 
 export type DesktopNotebookRecord = Immutable.RecordOf<DesktopNotebookProps>;
 
 export const makeDesktopNotebookRecord = Immutable.Record<DesktopNotebookProps>(
   {
-    closingState: DESKTOP_NOTEBOOK_CLOSING_NOT_STARTED
+    closingState: DESKTOP_NOTEBOOK_CLOSING_NOT_STARTED,
+    palletteHidden: true,
   }
 );
 

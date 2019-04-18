@@ -42,6 +42,7 @@ import NotebookHelmet from "./notebook-helmet";
 import StatusBar from "./status-bar";
 import Toolbar, { CellToolbarMask } from "./toolbar";
 import TransformMedia from "./transform-media";
+import PurePallette from "./pallette";
 
 import styled from "styled-components";
 
@@ -592,6 +593,7 @@ export class NotebookApp extends React.PureComponent<NotebookProps> {
     return (
       <React.Fragment>
         <NotebookHelmet contentRef={this.props.contentRef} />
+        <PurePallette />
         <Cells>
           <CellCreator
             id={this.props.cellOrder.get(0)}

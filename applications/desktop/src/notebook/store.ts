@@ -1,5 +1,5 @@
 import { middlewares as coreMiddlewares, reducers } from "@nteract/core";
-import { applyMiddleware, combineReducers, createStore, Store } from "redux";
+import { applyMiddleware, compose, combineReducers, createStore, Store } from "redux";
 import { combineEpics, createEpicMiddleware } from "redux-observable";
 
 import { Actions } from "./actions";
@@ -33,11 +33,23 @@ const rootReducer = combineReducers({
 export default function configureStore(
   initialState: DesktopNotebookAppState
 ): DesktopStore {
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
   const store = createStore(
     rootReducer,
     initialState,
-    applyMiddleware(...middlewares)
-  );
+    composeEnhancers(
+      applyMiddleware(...middlewares)
+    ));
+  // const store = createStore(
+  //   rootReducer,
+  //   initialState,
+  //   applyMiddleware(...middlewares)
+  // );
+  // const store = createStore(
+  //   rootReducer,
+  //   initialState,
+  //   applyMiddleware(...middlewares)
+  // );
   epicMiddleware.run(rootEpic);
   return store as DesktopStore;
 }

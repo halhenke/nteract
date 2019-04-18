@@ -481,6 +481,12 @@ export function loadFullMenu(store = global.store) {
     label: "View",
     submenu: [
       {
+        label: "Show Commands",
+        enabled: BrowserWindow.getAllWindows().length > 0,
+        accelerator: "CmdOrCtrl+Shift+P",
+        click: createSender("pallette")
+      },
+      {
         label: "Reload",
         enabled: BrowserWindow.getAllWindows().length > 0,
         accelerator: "CmdOrCtrl+R",
